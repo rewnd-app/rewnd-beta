@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Scrib Sans';
+  src: url('/rewnd-beta/fonts/ScribSans.otf') format('opentype');
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-light;
+  }
+
+  *:focus {
+    outline: none;
+  }
+  *:focus-visible {
+    outline: 2px solid theme('colors.primary');
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+}
+
+@layer utilities {
+  .card-surface {
+    background-color: theme('colors.surface');
+    border-radius: 1.5rem;
+    background-image: linear-gradient(135deg, rgba(220, 255, 120, 0.05) 0%, transparent 60%);
+    border: 1px solid rgba(220, 255, 120, 0.10);
+  }
+
+  .bg-hero-glow {
+    background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(220, 255, 120, 0.08) 0%, transparent 70%);
+  }
+
+  .bg-grid-dot {
+    background-image: radial-gradient(rgba(220, 255, 120, 0.06) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
