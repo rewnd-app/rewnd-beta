@@ -23,18 +23,26 @@ npm run dev      # http://localhost:5173
 ## Build
 
 ```bash
-npm run build    # outputs to dist/
+npm run build    # outputs the static site to docs/
 npm run preview  # preview the production build locally
 ```
 
 ## Deploy
 
-Hosted on **GitHub Pages**. Every push to `main` triggers
-`.github/workflows/deploy.yml`, which builds the site and publishes `dist/`.
+Hosted on **GitHub Pages**, configured as **Deploy from a branch → `main` /docs**.
 
-> The Vite `base` is set to `/rewnd-beta/` (the repo name) in `vite.config.js`.
-> If the repo is renamed, update `base` and the asset paths in `index.html`
-> and `src/index.css` to match.
+The site is committed (built) into `docs/`. To ship a change:
+
+```bash
+npm run build          # regenerates docs/
+git add -A && git commit -m "Update site"
+git push origin main   # GitHub Pages serves the new docs/ automatically
+```
+
+> - The Vite `base` is `/rewnd-beta/` (the repo name) in `vite.config.js`. If the
+>   repo is renamed, update `base` and the font path in `src/index.css`.
+> - `public/.nojekyll` is copied into `docs/` on every build so GitHub Pages
+>   serves the Vite `assets/` folder without running Jekyll.
 
 ## Edit the content
 
